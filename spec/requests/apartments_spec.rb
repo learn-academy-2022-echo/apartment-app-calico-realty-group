@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Apartments", type: :request do
-  let(:user) do
-    User.create email: 'test@example.com', password: 'password', password_confirmation: 'password'
-  end
+    user = User.where(email: 'test@example.com').first_or_create(password: 'password', password_confirmation: 'password')
+
 
   # -----index-----
   describe "GET /index" do
@@ -35,4 +34,38 @@ RSpec.describe "Apartments", type: :request do
       expect(apartment['email']).to eq 'hudson@example.com'
     end
   end
+
+  describe "POST /create" do
+    it 'creates an apartment for a user' do
+
+      apartment_params = {
+          apartment: {
+          street: '14561 Hudson St',
+          city: 'San Diego',
+          state: 'California',
+          manager: 'Ms. Hudson',
+          email: 'hudson@example.com',
+          price: '2000',
+          bedrooms: 1,
+          bathrooms: 2,
+          pets: 'yes',
+          image: 'google.com',
+          user_id: user.id
+        }
+      }
+
+      post '/apartments', params: apartment_params
+
+      apartment = Apartment.last
+      p apartment
+
+      expect(response).to have_http_status(200)
+      expect(apartment['street']).to eq '14561 Hudson St'
+      expect(apartment['city']).to eq 'San Diego'
+      expect(apartment['state']).to eq 'California'
+      expect(apartment['manager']).to eq 'Ms. Hudson'
+      expect(apartment['email']).to eq 'hudson@example.com'
+    end
+  end
+
 end
