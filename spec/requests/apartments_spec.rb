@@ -1,4 +1,4 @@
- require 'rails_helper'
+require 'rails_helper'
 
 RSpec.describe "Apartments", type: :request do
   let(:user) do
@@ -9,15 +9,16 @@ RSpec.describe "Apartments", type: :request do
   describe "GET /index" do
     it 'gets all the apartments' do
       user.apartments.create(
-        street: '221c Baker Street', 
-        city: 'London', 
-        state: 'England', 
-        manager: 'Ms. Hudson', 
-        email: 'hudson@example.com', 
-        price: '1000', 
-        bedrooms: 2, 
-        bathrooms: 2, 
-        pets: 'yes'
+        street: '221c Baker Street',
+        city: 'London',
+        state: 'England',
+        manager: 'Ms. Hudson',
+        email: 'hudson@example.com',
+        price: '1000',
+        bedrooms: 2,
+        bathrooms: 2,
+        pets: 'yes',
+        image: 'google.com'
       )
 
       get '/apartments'
