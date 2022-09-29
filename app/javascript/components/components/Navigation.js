@@ -11,7 +11,7 @@ const Navigation = ({
 }) => {
   return (
     <>
-      <Nav>
+      <Nav className="nav-bar">
         <NavItem>
           <NavLink to="/" className="nav-link">
             Home 
