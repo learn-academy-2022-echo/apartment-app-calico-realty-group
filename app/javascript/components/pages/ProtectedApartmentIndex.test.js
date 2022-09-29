@@ -6,6 +6,7 @@ import mockApartments from "../mockApartments"
 describe("<ProtectedApartmentIndex />", () => {
   it("renders ProtectedApartmentIndex without crashing", () => {
     const div = document.createElement("div")
-    render(<ProtectedApartmentIndex mockApartments = {mockApartments}/>, div)
+    render(<ProtectedApartmentIndex />, div)
+    expect("List of apartments for logged in users.").toBeInTheDocument
   })
 })

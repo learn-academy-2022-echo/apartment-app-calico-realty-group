@@ -7,6 +7,7 @@ const filteredApartments = apartments?.filter(apartment => apartment.user_id ===
 console.log(apartments);
 return (
     <>
+    <h1>List of apartments for logged in users.</h1>
       {filteredApartments?.map((apartment, index) => {
       return (
       <Card style={{width: '18rem'}} key={index}>
