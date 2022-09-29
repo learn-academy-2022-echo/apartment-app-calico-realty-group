@@ -31,7 +31,7 @@ const Navigation = ({
         )}
         {logged_in && (
           <NavItem>
-            <NavLink to="apartmentshow" className="nav-link">
+            <NavLink to="/protectedapartmentindex" className="nav-link">
               My Listings
             </NavLink>
           </NavItem>
